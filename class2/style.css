@@ -8,12 +8,8 @@
     width: 70px;
     height: 70px;
     border-radius: 50%;
+}
 
-}
-.logo img{
-    width:50px;
-    height: 50px;
-}
 header{
     display: grid;
     grid-template-columns: auto 1fr;
@@ -23,12 +19,8 @@ header{
 }
 body{
     background-image:url(./thisisengineering-raeng-uyfohHiTxho-unsplash-1024x683.png);
-    background-size: contain;
-
-
+    background-size:auto;
 }
-
-
 .search_bar input{
     width:100%;
     padding: 20px;
@@ -131,3 +123,22 @@ footer{
     
         }
     }
+    
+    @media  screen and (max-width:450px) {
+        h1{
+            font-size: 100%;
+    
+        }
+        header{
+            gap:15px;
+        }
+        .logo{
+        width:40px;
+        height: 40px;
+        padding:5px;
+    }
+        
+}
+
+
+   
