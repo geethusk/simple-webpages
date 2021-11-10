@@ -19,7 +19,8 @@ header{
 }
 body{
     background-image:url(./thisisengineering-raeng-uyfohHiTxho-unsplash-1024x683.png);
-    background-size:auto;
+    background-size:100%;
+    background-repeat: no-repeat;
 }
 .search_bar input{
     width:100%;
@@ -46,11 +47,10 @@ h1{
     color: white;
     padding: 10px;
     width:fit-content;
-    /* flex-wrap: wrap; */
     margin: auto;
     border-radius: 40px;
 }
-marquee{
+ marquee{         /*for moving text  */
     background-color: #f3f5c5;
     color: red;
     border-top:1px solid #707070;
@@ -60,7 +60,7 @@ marquee{
 }
 .main_section_container{
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4,1fr);  /*grid property  */
     gap: 20px;
     padding: 0 10px;
 }
@@ -124,7 +124,7 @@ footer{
         }
     }
     
-    @media  screen and (max-width:450px) {
+      @media  screen and (max-width:450px) {     /*and condition,always written at the end of the css code, because it overrides the other property*/ 
         h1{
             font-size: 100%;
     
@@ -140,6 +140,7 @@ footer{
     .search_bar input{
         padding:10px;
     }
+
         
 }
 
