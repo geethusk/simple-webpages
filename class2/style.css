@@ -137,6 +137,9 @@ footer{
         height: 40px;
         padding:5px;
     }
+    .search_bar input{
+        padding:10px;
+    }
         
 }
 
