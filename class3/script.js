@@ -54,17 +54,34 @@ document.getElementById("result_section").innerText=result;
 
 function findResult(){
   console.log(operandsArray,operatorsArray);
-  console.log(Number(operandsArray[0]));
-    while(operandsArray.length!=0 && operatorsArray.length!=1){
+
+   isFirstoperation=true;
+  while(operandsArray.length!=1 && operatorsArray.length!=0){
+        console.log(i,operatorsArray[i]);
         if(operatorsArray[i]==='*'|| operatorsArray[i]==='/'){
             operandsArray[i] = arithematic(operatorsArray[i],operandsArray[i],operandsArray[i+1]);
             operatorsArray = operatorsArray.filter((_val,j)=>i!=j);
-            operandsArray = operandsArray.filter((_val,j)=>i+1!=j);
-            
+            console.log(i);
+            operandsArray = operandsArray.filter((_val,j)=>i+1!=j);   
+        }else if(isFirstoperation){
+            i++;
+            if(operatorsArray.length <= i){
+                i=0;
+                isFirstoperation=false;
+            }
         }
-        
+
+        if(!isFirstoperation){
+            operandsArray[i] = arithematic(operatorsArray[i],operandsArray[i],operandsArray[i+1]);
+            operatorsArray = operatorsArray.filter((_val,j)=>i!=j);
+            operandsArray = operandsArray.filter((_val,j)=>i+1!=j);   
+        }
+        console.log(operandsArray,operatorsArray); 
     }
-  result=arithematic(operatorsArray[0],operandsArray[0],operandsArray[1]);
+    console.log(operandsArray,operatorsArray);
+  result=operandsArray[0];
+  isLastOperator = true;
+  operatorString = "";
 
 }
  function arithematic(operator,firstoperands,secondoperands){

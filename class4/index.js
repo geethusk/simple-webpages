@@ -43,6 +43,7 @@ const printpesonDetails=(person)=>{
 let person={
  name:"geethu" ,
  age:23,
+ job:"software Engineer",
   sayHello:()=>{
       console.log("Hello");
   },
