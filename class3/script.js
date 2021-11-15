@@ -3,7 +3,7 @@ let operatorString="";
 let i=0;
 let operator;
 let operatorsArray=[];   //to define operators
-let operandsArray=[];   //to define opearnds
+let operandsArray=[];   //to define operands
 let isLastOperator=true;
 
  const inputFields=document.getElementsByClassName("input_button");  //to get all elements in the array for input elements that is 16 elements including numbers and operators
@@ -15,7 +15,6 @@ for(let i=0;i<inputFields.length;i++){
 
 function listener(event){
 if(!event.target.getAttribute("role" )){
-   
     if(isLastOperator){
         operandsArray.push(event.target.innerText);
     }else{
@@ -23,6 +22,33 @@ if(!event.target.getAttribute("role" )){
     }
     isLastOperator= false;
     operatorString+=event.target.innerText;
+}
+
+else
+if(event.target.getAttribute("role")=== "clear_section" ){
+    result=0;
+     operatorString="";
+     i=0;
+     operator;
+     operatorsArray=[];   //to define operators
+     operandsArray=[];   //to define operands
+     isLastOperator=true;
+         
+     
+}
+else
+if(event.target.getAttribute("role")=== "delete_section" ){
+    operatorString = operatorString.slice(0,operatorString.length-1)
+    console.log(operatorString);
+    if(isLastOperator){
+        operatorsArray=operatorsArray.filter((_val,i)=>i!==operatorsArray.length-1)  
+        console.log(operatorsArray);
+    }
+    //  i=0;
+    //  operator;
+    //  operatorsArray=[];   //to define operators
+    //  operandsArray=[];   //to define operands
+    //  isLastOperator=true;
 }
 
 else

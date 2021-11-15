@@ -60,3 +60,15 @@ body{
  .green_color{
      color: green;
  }
+ .clear_container{
+    display: grid;
+     grid-template-columns: repeat(2,1fr);
+     gap:5px;
+     margin-left:2px; 
+     /* place-items: center;  
+     padding:2px; */
+ }
+ .blue_background{
+     background-color: darkblue;
+     color: white;
+ }
