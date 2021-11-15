@@ -5,6 +5,8 @@ let operator;
 let operatorsArray=[];   //to define operators
 let operandsArray=[];   //to define operands
 let isLastOperator=true;
+let isLastResult=false;
+
 
  const inputFields=document.getElementsByClassName("input_button");  //to get all elements in the array for input elements that is 16 elements including numbers and operators
 
@@ -15,6 +17,11 @@ for(let i=0;i<inputFields.length;i++){
 
 function listener(event){
 if(!event.target.getAttribute("role" )){
+    if(isLastResult){
+        operandsArray=[];
+        isLastResult=false;
+        isLastOperator=true;
+    }
     if(isLastOperator){
         operandsArray.push(event.target.innerText);
     }else{
@@ -32,18 +39,36 @@ if(event.target.getAttribute("role")=== "clear_section" ){
      operator;
      operatorsArray=[];   //to define operators
      operandsArray=[];   //to define operands
-     isLastOperator=true;
-         
-     
+     isLastOperator=true;    
 }
 else
 if(event.target.getAttribute("role")=== "delete_section" ){
-    operatorString = operatorString.slice(0,operatorString.length-1)
-    console.log(operatorString);
+
+   
+    operatorString = operatorString.slice(0,-1)
+    
     if(isLastOperator){
-        operatorsArray=operatorsArray.filter((_val,i)=>i!==operatorsArray.length-1)  
+        operatorsArray=operatorsArray.slice(0,-1)  
         console.log(operatorsArray);
+        isLastOperator=false;
     }
+    else{
+        if(operandsArray[operandsArray.length - 1].length>1){
+            operandsArray[operandsArray.length - 1] = operandsArray[operandsArray.length - 1].slice(0,-1);
+        }
+        //console.log(operandsArray[operandsArray.length - 1]);
+        else{
+            operandsArray= operandsArray.slice(0,-1);
+        }
+        if(operandsArray.length>operatorsArray.length){
+            isLastOperator=false;
+        }
+        else{
+            isLastOperator=true;
+        }
+        
+    }
+    
     //  i=0;
     //  operator;
     //  operatorsArray=[];   //to define operators
@@ -59,6 +84,7 @@ if(event.target.getAttribute("role")=== "submit" ){
 }else
 {
     if(!isLastOperator){
+        isLastResult=false;
         operatorsArray.push(event.target.innerText);
         operatorString+=event.target.innerText;
     }
@@ -95,19 +121,23 @@ function findResult(){
                 i=0;
                 isFirstoperation=false;
             }
+
         }
+
 
         if(!isFirstoperation){
             operandsArray[i] = arithematic(operatorsArray[i],operandsArray[i],operandsArray[i+1]);
             operatorsArray = operatorsArray.filter((_val,j)=>i!=j);
             operandsArray = operandsArray.filter((_val,j)=>i+1!=j);   
         }
+        }
         console.log(operandsArray,operatorsArray); 
-    }
+
     console.log(operandsArray,operatorsArray);
   result=operandsArray[0];
-  isLastOperator = true;
+  isLastOperator = false;
   operatorString = "";
+  isLastResult=true;
 
 }
  function arithematic(operator,firstoperands,secondoperands){
